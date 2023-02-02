@@ -21,12 +21,12 @@ $(document).ready(function(){
         var storedValue = localStorage.getItem(timeBlockId);
         $(this).find(".description").val(storedValue);
     });
-    
+    // sets and saves data to local storage 
     $(".saveBtn").on("click", function(){
         var value = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
         localStorage.setItem(time, value);
     });
-    
+    // Brings in current day and time  
     $("#currentDay").text(dayjs());
 });
