@@ -15,10 +15,18 @@ WHEN I refresh the page
 THEN the saved events persist */ 
 
 $(document).ready(function(){
+    // Retrieve stored data from local storage and set the value of the appropriate elements.
+    $(".time-block").each(function() {
+        var timeBlockId = $(this).attr("id");
+        var storedValue = localStorage.getItem(timeBlockId);
+        $(this).find(".description").val(storedValue);
+    });
+    
     $(".saveBtn").on("click", function(){
-        var value = $("this").siblings(".description").val();
-        var time = $("this").parent().attr("id");
+        var value = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id");
         localStorage.setItem(time, value);
-    })
+    });
+    
     $("#currentDay").text(dayjs());
 });
